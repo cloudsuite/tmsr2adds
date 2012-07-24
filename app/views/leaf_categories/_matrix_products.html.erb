@@ -12,7 +12,7 @@
 		<div class="product">
 			<a href='<%= base_product_path(p.id) %>'>
 				<div class="pic">
-					<%= image_tag("/images/products/all_small/" + p.image_filename + ".jpg",:height => "80") %>
+					<%= image_tag("http://s3.amazon.com/trumedical/images/products/all_small/" + p.image_filename + ".jpg",:height => "80") %>
 				</div>
 				<div class="productName"><%= sanitize(p.name[0,37]) %></div>
 			</a>
