@@ -53,9 +53,15 @@ class Nssoap
         if(clinic_netsuite_id!=nil && clinic_netsuite_id!="")
             puts "clinic netsuite id"
             puts clinic_netsuite_id
+            
+            #if clinician, then find clinic record
+            @clinicrecord = @client.find_by_internal_id('CustomerSearchBasic', clinic_netsuite_id)
+            @paymentterms = @clinicrecord.terms.xmlattr_internalId
+            @clinicaddresses = @clinicrecord.addressbookList
+            puts @clinicaddresses.addressbook[0]
+            
             @customclinicid = SelectCustomFieldRef.new()
             @customclinicid.xmlattr_internalId = "custentity_clinic_id"
-            
             @customerlist =  ListOrRecordRef.new()
             @customerlist.xmlattr_internalId = clinic_netsuite_id
             
@@ -67,11 +73,17 @@ class Nssoap
             @custfieldlist[0] = @customclinicid
             ref.customFieldList = @custfieldlist
             
-            #payment terms NET 30
+            #payment terms from Clinic
             payterms = RecordRef.new
-            payterms.xmlattr_internalId = 2
+            payterms.xmlattr_internalId = @paymentterms
             payterms.name = 'terms'
-            #ref.terms = payterms   
+            ref.terms = payterms
+            
+            #set address of clinic
+            ad = Array.new(1)
+            ad[0] = @clinicaddresses.addressbook[0]
+            @addrbooklist = CustomerAddressbookList.new(ad)
+            ref.addressbookList = @addrbooklist
         end
         
         #ref.companyName = companyName
