@@ -9,7 +9,7 @@
 	<% @category.product_types.each do |p| %> 
 		<div class="product">
 			<a href='<%= product_type_path(p.id) %>'>
-				<%= image_tag("http://s3.amazon.com/trumedical/images/products/all_small/" + p.image_filename + ".jpg", :size => "120x80",:style => "float:left; border:0;") %>
+				<%= image_tag("http://s3.amazonaws.com/trumedical/images/products/all_small/" + p.image_filename + ".jpg", :size => "120x80",:style => "float:left; border:0;") %>
 				<div class="productName"><%= sanitize(p.name[0,37]) %></div>
 			</a>
 		</div>

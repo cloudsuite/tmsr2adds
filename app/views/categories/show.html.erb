@@ -171,7 +171,7 @@
 											<div class="product">
 												<a href='<%= product_set_path(p.id) %>'>			
 													<div class="pic">
-														<%= image_tag("http://s3.amazon.com/trumedical/images/products/all_small/" + p.image_filename[0,6] + "-000" + ".jpg") %> <!-- WHY? Because image_filenames in products table have the -00n ending of the tms-product-id, but the image files in images/products/all_small all end in -000 -->
+														<%= image_tag("http://s3.amazonaws.com/trumedical/images/products/all_small/" + p.image_filename[0,6] + "-000" + ".jpg") %> <!-- WHY? Because image_filenames in products table have the -00n ending of the tms-product-id, but the image files in images/products/all_small all end in -000 -->
 													</div>			
 													<div class="productName"><%= sanitize(p.name[0,44]) %></div>
 												</a>
@@ -183,7 +183,7 @@
 												<a href='<%= base_product_path(p.id) %>'>	
 													<!-- may want to move the show action and its view for base_product into product --> 		
 													<div class="pic">
-														<%= image_tag("http://s3.amazon.com/trumedical/images/products/all_small/" + p.image_filename + ".jpg") %>
+														<%= image_tag("http://s3.amazonaws.com/trumedical/images/products/all_small/" + p.image_filename + ".jpg") %>
 													</div>			
 													<div class="productName"><%= sanitize(p.name[0,44]) %></div>
 												</a>
@@ -193,7 +193,7 @@
 											<div class='product'>
 												<a href='<%= product_path(p.id) %>'>
 													<div class='pic'>
-														<%= image_tag('http://s3.amazon.com/trumedical/images/products/all_small/' + p.image_filename + '.jpg') %>
+														<%= image_tag('http://s3.amazonaws.com/trumedical/images/products/all_small/' + p.image_filename + '.jpg') %>
 													</div>
 													<div class='productName'><%= sanitize(p.name[0,44]) %></div>
 												</a>
@@ -202,7 +202,7 @@
 											<div class="product">
 												<a href='<%= product_type_path(p.id) %>'>
 													<div class='pic'>
-														<%= image_tag('http://s3.amazon.com/trumedical/images/products/all_small/' + p.image_filename + '.jpg')  %>
+														<%= image_tag('http://s3.amazonaws.com/trumedical/images/products/all_small/' + p.image_filename + '.jpg')  %>
 													</div>
 													<div class='productName'><%= sanitize(p.name[0,44]) %></div>
 												</a>
@@ -223,7 +223,7 @@
 									<div class="leafCategory">
 										<a href='<%= category_path(subcat.id) %>'>
 											<div class="pic">
-												<%= image_tag("http://s3.amazon.com/trumedical/images/categories/all/" + subcat.image_filename + ".jpg") %>
+												<%= image_tag("http://s3.amazonaws.com/trumedical/images/categories/all/" + subcat.image_filename + ".jpg") %>
 											</div>
 											<div class="leafCategoryName"><%= subcat.name %></div>
 										</a>
