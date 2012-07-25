@@ -17,6 +17,7 @@ gem 'rails', '3.0.7'
   gem 'devise'
   gem 'formtastic','~> 2.1.1'
   gem "simple_form"
+  gem 'newrelic_rpm'
    
 # ——————————————————————————————————————————————————	
 # gem 'bj'

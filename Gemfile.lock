@@ -84,6 +84,7 @@ GEM
     mime-types (1.16)
     netsuite_client (1.0)
       soap4r
+    newrelic_rpm (3.4.0.1)
     orm_adapter (0.0.5)
     polyglot (0.3.1)
     rack (1.2.3)
@@ -133,6 +134,7 @@ DEPENDENCIES
   meta_search
   meta_where
   netsuite_client (= 1.0)
+  newrelic_rpm
   rails (= 3.0.7)
   simple_form
   sitemap_generator

@@ -6,6 +6,8 @@
 		
 		<div class="subcategory">
 			<a href='<%= category_path(subcat.id) %>'>
+				
+				<!-- http://s3.amazonaws.com/trumedical/images -->
 
 				<%= image_tag("http://s3.amazonaws.com/trumedical/images/categories/all/" + subcat.image_filename + ".jpg", :size => "120x80",:style => "float:left; border:0;") %>
 				<div class="subcategoryName"><%= subcat.name %></div>
