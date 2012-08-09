@@ -1,7 +1,12 @@
 .bundle
 db/*.sqlite3
 log/*.log
-tmp/
+log/*.pid
+tmp/**/*
 .DS_Store
 test/
 screenGrabs/
+config/database.yml
+config/app_config.yml
+config/initializers/development_mail.rb
+.sass-cache/

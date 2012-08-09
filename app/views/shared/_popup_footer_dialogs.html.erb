@@ -55,7 +55,7 @@
 
 			<p>TruMedical Solutions, LLC.  places the utmost importance on protecting information transmitted via our website and takes security precautions to protect all such information from loss, misuse, and alteration. These precautions are regularly reviewed and enhanced as part of TruMedical Solutions’ ongoing commitment to customer security and privacy.</p>
 
-			<p>If you have any questions about the security at our website, please e-mail us at: <%= mail_to "websupport@tru-medical.com",nil, :subject => "privacy policy" %>.</p>
+			<p>If you have any questions about the security at our website, please e-mail us at: <%= mail_to "websupport@tru-medical.com", nil, :subject => "privacy policy" %>.</p>
 
 
 			<p>TruMedical Solutions, LLC.  reserves the right to alter this policy at any time. Changes will be posted immediately on our website.</p>
@@ -97,7 +97,7 @@
 	</div> <!-- end div 'tabs' -->	
 </div> <!-- end div 'privacyPolicy' -->
 
-<!-- Request Catelog ——————————————————————————————— -->
+<!-- Request Catalog ——————————————————————————————— -->
 <!-- was comment out to attempt to avoid conflict with devise on Users -->
 
 <div id='requestCatelog'>
@@ -106,7 +106,7 @@
 		<%= image_tag("footer/catelog_cover.jpg", :style => "padding-left:15px;") %> <!-- 125x162 -->
 	</div>
 	<div id="request" style="margin-left: 160px;">
-		<p>If you would like us to mail you a printed copy of our 2012 Product Catelog, please fill in your mailing address below, and indicate how</br>many copies you would like. </p>
+		<p>If you would like us to mail you a printed copy of our 2012 Product Catalog, please fill in your mailing address below, and indicate how</br>many copies you would like. </p>
 				<% @request = Request.new() %> <!-- form_for takes an instance of the model class, not the class itself: awkward for object creation -->
 				<!-- eventually replace with AJAX-based cascaded form that fills in address information if user is logged in; and asks him to log in if he is not; that done, it asks only how many he would like, perhaps printing out the address we have for him (or for his clinic) and asking for a confirmation that this is the mailing
 		address we are to use. -->

@@ -35,6 +35,8 @@ Tm3ror::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
   
   # pull static assets from amazon S3 rather than heroku 
+  # ( disabled because we only have the product images on s3, not 
+  # all images, or js and css assets )
   # ActionController::Base.asset_host = "http://s3.amazonaws.com/trumedical"
   
   # Disable delivery errors, bad email addresses will be ignored
@@ -49,4 +51,13 @@ Tm3ror::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  # Compress javascripts and css
+  config.assets.compress = true
+  # Don't fall back to assets pipeline if a precompile fails
+  #config.assets.compile = false
+  # DO fall back to runtime compilation of assets, since 
+  # haven't figured out how to precompile bootstrap's css
+  # ( or perhaps anything using scss preprocessor? )
+  # Generate digests for assets URLs
+  config.assets.digest = true 
 end

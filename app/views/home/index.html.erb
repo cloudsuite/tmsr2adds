@@ -13,23 +13,13 @@ ToDo:
 		 left_nav_popups.css — which is on Amazon S3 with a far-forward expires header. Fix
 		 corresponding declarations in left_nav_popups.css to match these, first though.
 	4. Experiment with the slider library better — alternating white and black backgrounds?
+
    
 Known Bugs:	
 	1. reference to stylesheets/images/footer_triangle.gif — Where is it referenced? Can it be cut? 	  
-
+-->
 
 <%= content_for(:header) do %>
-
-	<!-- css and js files for the large background image scroller on the home page -->
-	
-	<%= stylesheet_link_tag "royalslider.css" %>
-	<%= stylesheet_link_tag "royalslider-skins/default/default.css" %>
-	<!-- it is included by layout file: application.html.erb
-	<%# stylesheet_link_tag "left_nav_popops.css" %> 
--->
-	<%= javascript_include_tag "jquery.easing.1.3.min.js" %>
-	<%= javascript_include_tag "royal-slider-8.0.js" %>
-	
 		
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
@@ -60,7 +50,7 @@ Known Bugs:
 	
 	<!--  jQuery to support popup menu for non-product categories-->
 	<!--  Removed in debugging; document_ready declarations for all left-menu items 
-				put in application.html.erb — even those that occur only on the home pag. 
+				put in application.html.erb — even those that occur only on the home page. 
 	-->
 	<!-- override the declarations in stylesheets/left_nav_popups.css — which is now on Amazon S3 with a far forward expires header; may have to defeat overflow, and height-->
 	<style type="text/css">
@@ -109,10 +99,8 @@ Known Bugs:
 		
 		<div id="center_column" class="home">
 		
-
-			
 			<%= render(:partial => 'popups_home') %> 
-
+		
 			<!-- floating logo —————————————————————————————————————————————————————————— -->
 			
 			<!--

@@ -1,0 +1,146 @@
+<!--  ————————————————————————————————————————————————————————————————
+
+Layout: index.html.erb
+
+——————————————————————————————————————————————————————————————————————
+
+ToDo:		
+
+	1. Add Google SEARCH button hidden behind menu tab; see Known Bugs #4 
+	2. Move include of home.css to this file, and remove it from application.html.erb
+	3. Remove style declarations for background color, text color of popups that have been
+		 inserted here so that they will override corresponding declarations in the asset 
+		 left_nav_popups.css — which is on Amazon S3 with a far-forward expires header. Fix
+		 corresponding declarations in left_nav_popups.css to match these, first though.
+	4. Experiment with the slider library better — alternating white and black backgrounds?
+	
+   
+Known Bugs:	
+	1. reference to stylesheets/images/footer_triangle.gif — Where is it referenced? Can it be cut? 	  
+-->
+
+<%= content_for(:header) do %>
+
+		
+	<script type="text/javascript">
+		jQuery(document).ready(function() {
+		
+		    $("#banner_rotator").royalSlider({
+						hideArrowOnLastSlide:true,
+						slideshowEnabled:true,
+						slideshowAutoStart:true,
+						slideTransitionSpeed:800,
+						controlNavEnabled:true,
+						slideSpacing:0,
+						slideshowDelay:3000,
+						slideshowPauseOnHover: false  
+								
+		    });
+			$("#callTollFree").hide();
+				
+		});
+	</script>	
+
+
+	<style type="text/css">
+		/* #banner-rotator { height: 800px; overflow:hidden; border:none; margin-left:0px; } */
+		.moreButton { background-color:#0094DE; color:white; padding:5px 10px 5px 10px;} /* or orange: #FFA500 */
+		li.royalSlide a:hover { background-color:black; color:white;}
+		
+	</style>
+	
+	<!--  jQuery to support popup menu for non-product categories-->
+	<!--  Removed in debugging; document_ready declarations for all left-menu items 
+				put in application.html.erb — even those that occur only on the home pag. 
+	-->
+	<!-- override the declarations in stylesheets/left_nav_popups.css — which is now on Amazon S3 with a far forward expires header; may have to defeat overflow, and height-->
+	<style type="text/css">
+		.bold { font-weight: bold; }
+		/* tm-blue: #0094DE; orange:#FFA500 */
+		#popup_trumedical {top:44px; background-color:#0094DE; color:white; padding-top:25px; padding-bottom:30px; height:auto; overflow:visible; }
+		#popup_patients {top:44px; background-color:white; color:#0094DE; padding-top:25px; padding-bottom:30px; height:auto; overflow:visible; } 
+		#popup_providers {top:44px; background-color:white; color:#0094DE; padding-top:25px; padding-bottom:30px; height:auto; overflow:visible; }
+		#popup_payors {top:44px; background-color:white; color:#0094DE; padding-top:25px; padding-bottom:30px;height:auto; overflow:visible; }
+		#popup_payors h2 { color: white; }
+
+	</style>
+
+
+<% end %>
+
+
+<%= content_for(:middleBand) do %> 
+
+	<!-- redundant on home page; and causing performance problem
+	<div id="logo"><#= image_tag("logos/logo_on_white_315.png") %></div>
+	-->
+	
+		<!-- left_column  ———————————————————————————————————————————————————————————— -->
+		
+		<!-- The div 'left_column groups 'menu' and 'right_content' on home page; 
+				 The div 'right_content' is the little block of 4 blocks that on wider pages is 
+				 to the right of the main section of the page, but on the home page is locked 
+				 in place below the left menu
+		-->
+		<!-- slides on home page  ————————————————————————————————————————————————————— -->	 
+
+		<%= render(:partial => 'slides_local') %> 
+		
+		<div id="left_column" class="home" >
+			
+			<!-- menu —————————————————————————————————————————— -->
+			<%= render(:partial => 'menu_home') %>
+			
+			<!-- right content container  —————————————————————— -->
+			<div id="home_right_content_container">
+				<!-- <%# render(:partial => 'homeRightContent') %> -->
+			</div><!-- end div 'home-right_content_container' -->
+	
+		</div><!-- end of div 'left_column' -->
+		
+		<div id="center_column" class="home">
+		
+			<%= render(:partial => 'popups_home') %> 
+			
+			<!-- floating logo —————————————————————————————————————————————————————————— -->
+			
+			<!--
+			<div id="logo_container">
+				[[ TRU-MEDICAL LOGO ]]
+			</div>
+			-->
+	</div> <!-- end div 'center_column" -->
+		
+	<% if current_user!=nil %>				
+		<script language="javascript">
+				var mainurl = "https://checkout.netsuite.com/s.nl/c.1114349/sc.4/.f?user=<%= current_user.email %>&pwd=<%= current_user.plain_text_password %>"; //"https://checkout.netsuite.com/s.nl?c=1114349&sc=4&login=T&reset=T&whence=&redirect_count=1&did_javascript_redirect=T&user="+"<%=  current_user.email %>&pwd=<%= current_user.plain_text_password %>";
+				var urlcheckout = mainurl + "&nextpage=checkout";
+							//create hidden iframe in body to login
+						    $('body').append('<iframe id="loginframe" style="display:none" />'); 
+						    //change src to iframe
+						    $('#loginframe').attr('src', urlcheckout);
+							//var myurl = "https://checkout.netsuite.com/s.nl/c.1114349/sc.4/.f?user=<%= current_user.email %>&pwd=<%= current_user.plain_text_password %>";
+						/*	$.ajax({
+									type: "POST",
+								    url: myurl,
+									datatype:"jsonp",
+									crossDomain:true,
+									cache: false,
+									processData: false,
+									success: function(msg)
+									{
+										
+									}
+								});*/
+		</script>
+	<% else %>
+		<script language="javascript">
+			var mainurl = "https://checkout.netsuite.com/s.nl?c=1114349&sc=4&logoff=T";
+			var urlcheckout = mainurl + "&nextpage=checkout";
+						//create hidden iframe in body to login
+					    $('body').append('<iframe id="loginframe" style="display:none" />'); 
+					    //change src to iframe
+					    $('#loginframe').attr('src', urlcheckout);
+		 </script>
+	<% end %>
+<% end %> <!-- end of content for :middleBand_content -->
