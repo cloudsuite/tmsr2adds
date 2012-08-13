@@ -1,6 +1,6 @@
-Tm3ror::Application.configure do
+Tmsr2::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  
+
   # This will remap ALL asset references:  images, stylesheets, javascripts, ... 
   
   # ActionController::Base.asset_host = "http://s3.amazonaws.com/trumedical"
@@ -30,9 +30,11 @@ Tm3ror::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+  #config.consider_all_requests_local       = true # commented out in attempt to get fragment caching to work _____________
   #config.action_view.debug_rjs             = true # commented out to move to Rails 3.1.5
-  config.action_controller.perform_caching = false
+  
+  # turn caching on in development; false by default 
+  config.action_controller.perform_caching = true # set by TMA 08/12 ————————————————————
 
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
@@ -53,5 +55,6 @@ Tm3ror::Application.configure do
   config.assets.compress = false
   # Expands the lines which load the assets
   config.assets.debug = true
+  
 end
 

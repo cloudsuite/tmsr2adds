@@ -2,65 +2,68 @@
 <!-- popups which become visible when user clicks menu items ———————————-->
 
 <div id="popupsContainer">
+	
+	<!-- predicates were of the form: where(:name => "Orthopedic Products & Supplies").first -->
+	<!-- replaced with these with hard-wired ids from categories table for performance -->
 
 	<!-- Modalities  popup ———————————————————————————————————————————————-->
 
 	<div id="popup_modalities" class="popup_base">
-		<% @top_category = Category.where(:name => "Modalities").first %>
+		<% @top_category = Category.find(1) %>
 		<%= render "/shared/subcategories_of_top_category" %>		
 	</div> 
 	
 	<!-- Clinical Supplies  popup ————————————————————————————————————————-->
 	<div id="popup_clinicalSupplies" class="popup_base">
-		<% @top_category = Category.where(:name => "Clinic Products & Supplies").first %>
+		<% @top_category = Category.find(23) %>
 		<%= render "/shared/subcategories_of_top_category" %>
 	</div>
 	
 	<!-- Tables & Traction  popup ————————————————————————————————————————-->
 	<div id="popup_tables" class="popup_base">
-		<% @top_category = Category.where(:name => "Tables & Traction").first %>
+		<% @top_category = Category.find(43) %>
 		<%= render "/shared/subcategories_of_top_category" %>
 	</div>
 	
 	<!-- Fitness  popup ——————————————————————————————————————————————————-->
 	<div id="popup_fitness" class="popup_base">
-		<% @top_category = Category.where(:name => "Fitness Equipment").first %>
+		<% @top_category = Category.find(59) %>
 		<%= render "/shared/subcategories_of_top_category" %>
 	</div>
 	
 	<!-- Orthopedics  popup ——————————————————————————————————————————————-->
 	<div id="popup_orthopedics" class="popup_base">
-		<% @top_category = Category.where(:name => "Orthopedic Products & Supplies").first %>
+		<% @top_category = Category.find(70) %>
 		<%= render "/shared/subcategories_of_top_category" %>  
 	</div>
 	
 	<!-- ATC/Taping  popup ———————————————————————————————————————————————-->
 	<div id="popup_taping" class="popup_base">
-		<% @top_category = Category.where(:name => "ATC & Taping").first %>
+		<% @top_category = Category.find(81) %>
 		<%= render "/shared/subcategories_of_top_category" %>  
 	</div>
 	
 	<!-- Evaluation  popup ———————————————————————————————————————————————-->
 	<div id="popup_evaluation" class="popup_base">
-		<% @top_category = Category.where(:name => "Evaluation Products").first %>
+		<% @top_category = Category.find(86) %>
 		<%= render "/shared/subcategories_of_top_category" %>  
 	</div>
 	
 	<!-- Daily Ling Aids  popup ——————————————————————————————————————————-->
 	<div id="popup_dailyLiving" class="popup_base">
-		<% @top_category = Category.where(:name => "Aids to Daily Living").first %>
+		<% @top_category = Category.find(93) %>
 		<%= render "/shared/subcategories_of_top_category" %>  
 	</div>
 	
 	<!-- Lymphedema  popup ———————————————————————————————————————————————-->
 	<div id="popup_lymphedema" class="popup_base">
-		<% @top_category = Category.where(:name => "Lymphedema").first %> 
+		<% @top_category = Category.find(97) %> 
 		<%= render "/shared/subcategories_of_top_category" %>  
 	</div>
 	
 	<!-- Wound Care  popup ———————————————————————————————————————————————-->
 	<div id="popup_woundCare" class="popup_base">
-		<% @top_category = Category.where(:name => "Wound Care").first %>
+		<% @top_category = Category.find(102) %>
 		<%= render "/shared/subcategories_of_top_category" %> 
 	</div>
 

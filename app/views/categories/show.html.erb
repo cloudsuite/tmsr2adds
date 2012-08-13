@@ -113,7 +113,9 @@
 								The home page can use @category because it does not use it elsewhere; the 
 								categories/show pages do use @category.   
 						-->
-					<%= render(:partial => "/shared/menu_popups") %> 
+					<%= cache(:fragment => 'shared_menu_popups') do 
+						render(:partial => "/shared/menu_popups") 
+					end %>
 					
 					<!-- Error Messages ———————————————————————————————————————— -->
 					<div id="error-messages" style="display:none"></div>
@@ -127,12 +129,6 @@
 						<%= link_to(logomark,root_path()) %>
 					</div>
 			
-					<!-- TABS: repeat subcategories within this category  ————————————————————— -->
-					<!-- Show products for the subcategory that he selected on the home page
-						   Change to products for a different subcategory if he selects it here
-							 How does/should this work if there is another level of categories?
-							 Never is in Mavics?  Does occur in TruMedical?
-						-->
 							
 					<!-- Sibling Nav  ——————————————————————————————————————————————————————— -->
                     
@@ -169,7 +165,7 @@
 										case p.type
 										when "ProductSet" %>
 											<div class="product">
-												<a href='<%= product_set_path(p.id) %>'>			
+												<a href='<%= product_set_path(p.id) %>' class="follow">			
 													<div class="pic">
 														<%= image_tag("products/all_small/" + p.image_filename[0,6] + "-000" + ".jpg") %> <!-- WHY? Because image_filenames in products table have the -00n ending of the tms-product-id, but the image files in images/products/all_small all end in -000 -->
 													</div>			
@@ -180,7 +176,7 @@
 										<% when "BaseProduct" %>
 										
 											<div class="product">
-												<a href='<%= base_product_path(p.id) %>'>	
+												<a href='<%= base_product_path(p.id) %>' class="follow">	
 													<!-- may want to move the show action and its view for base_product into product --> 		
 													<div class="pic">
 														<%= image_tag("products/all_small/" + p.image_filename + ".jpg") %>
@@ -191,7 +187,7 @@
 											
 										<% when "SimpleProduct" %>
 											<div class='product'>
-												<a href='<%= product_path(p.id) %>'>
+												<a href='<%= product_path(p.id) %>' class="follow">
 													<div class='pic'>
 														<%= image_tag('products/all_small/' + p.image_filename + '.jpg') %>
 													</div>
@@ -200,7 +196,7 @@
 											</div>
 										<% when "ProductType" %>
 											<div class="product">
-												<a href='<%= product_type_path(p.id) %>'>
+												<a href='<%= product_type_path(p.id) %>' class="follow">
 													<div class='pic'>
 														<%= image_tag('products/all_small/' + p.image_filename + '.jpg')  %>
 													</div>
@@ -221,7 +217,7 @@
 
 									<!-- render a clickable partial that displays the subcategory image and name -->
 									<div class="leafCategory">
-										<a href='<%= category_path(subcat.id) %>'>
+										<a href='<%= category_path(subcat.id) %>' class="follow_category">
 											<div class="pic">
 												<%= image_tag("http://s3.amazonaws.com/trumedical/images/categories/all/" + subcat.image_filename + ".jpg") %>
 											</div>

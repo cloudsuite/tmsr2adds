@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120706180334) do
+ActiveRecord::Schema.define(:version => 20120812191955) do
 
   create_table "accessories", :force => true do |t|
     t.integer  "category_id"
@@ -157,6 +158,10 @@ ActiveRecord::Schema.define(:version => 20120706180334) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "categories", ["id"], :name => "index_categories_on_id"
+  add_index "categories", ["name"], :name => "index_categories_on_name"
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
 
   create_table "clinicians", :force => true do |t|
     t.integer  "clinic_id"
@@ -321,6 +326,10 @@ ActiveRecord::Schema.define(:version => 20120706180334) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "products", ["base_product_id"], :name => "index_products_on_base_product_id"
+  add_index "products", ["category_id"], :name => "index_products_on_category_id"
+  add_index "products", ["id"], :name => "index_products_on_id"
 
   create_table "requests", :force => true do |t|
     t.string   "first_name"

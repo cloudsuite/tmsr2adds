@@ -98,8 +98,10 @@ Known Bugs:
 		</div><!-- end of div 'left_column' -->
 		
 		<div id="center_column" class="home">
-		
-			<%= render(:partial => 'popups_home') %> 
+			<!-- create popup menus in a cached fragment ——————————————————— -->
+			<%= cache(:fragment => 'home_menu_popups') do %>
+				<%= render(:partial => 'popups_home') %> 
+			<% end %>
 		
 			<!-- floating logo —————————————————————————————————————————————————————————— -->
 			

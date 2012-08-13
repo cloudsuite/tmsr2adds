@@ -182,8 +182,10 @@
 				</div>
 			
 				<!-- menu popups: top level categories ——————————————————————————————————— -->
-				
-				<%= render(:partial => "/shared/menu_popups") %>
+				<% cache(:fragment => 'product_type_shared_menu_popups') do %> 
+				  <%= render(:partial => "/shared/menu_popups") %>
+				<% end %>
+			
 		
 	      <!-- product type ———————————————————————————————————————————————————————————— -->
 				<div id="product_goodies">

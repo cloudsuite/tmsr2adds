@@ -137,7 +137,10 @@
 				</div>
 				
 				<!-- menu popups: top level categories ———————————————————————— -->
-				<%= render(:partial => "/shared/menu_popups") %>
+				<% cache(:fragment => 'product_set_shared_menu_popups') do %> 
+				  <%= render(:partial => "/shared/menu_popups") %>
+				<% end %>
+	
 
 	      <!-- product set —————————————————————————————————————————————— -->
 				<div id="product_goodies"> <!-- so can scroll vertically if too deep -->

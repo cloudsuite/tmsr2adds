@@ -7,7 +7,7 @@ Bundler.require *Rails.groups(:assets => %w(development test))
 # If you want your assets lazily compiled in production, use this line
 # Bundler.require(:default, :assets, Rails.env)
 
-module Tm3ror
+module Tmsr2
   class Application < Rails::Application
     # enable the asset pipeline
     config.assets.enabled = true
@@ -43,5 +43,9 @@ module Tm3ror
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+    
+    # enable IdentityMap for Active Record, to disable set to false or remove
+    config.active_record.identity_map = true
+    ActiveRecord::IdentityMap.enabled = true # Ryan Bate's hack for #3.0 Beta
   end
 end

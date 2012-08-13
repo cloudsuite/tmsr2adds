@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Tm3ror::Application.load_tasks
+Tmsr2::Application.load_tasks

@@ -410,11 +410,12 @@
 						when it attempts to generate a link to { :controller => 'devise/products', :action => 'search' } 
 						rather than { :controller => 'products', :action => 'search'} 
 						Now (Aug 2012) commented out because metawhere is incompatible with Rails 3.1.x.  
-						Replace with Squeel. 
+						Replace with Squeel. Done Aug 8 2012. 
 					-->
-					<!--
-					<#= render :partial => '/shared/metasearch' %>
-					-->
+					<% cache(:fragment => 'layout_shared_metasearch') do %>
+						<%= render :partial => '/shared/metasearch' %>
+					<% end %>
+				
 
 					<a href="#contactUs">Contact Us</a> 
 					<a href="#privacyPolicy">Privacy Policy</a> 

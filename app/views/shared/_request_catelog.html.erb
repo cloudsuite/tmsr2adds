@@ -10,18 +10,21 @@
 		<% @request = User.new() %> <!-- form_for takes an instance of the model class, not the class itself: awkward for object creation -->
 		<!-- eventually replace with AJAX-based cascaded form that fills in address information if user is logged in; and asks him to log in if he is not; that done, it asks only how many he would like, perhaps printing out the address we have for him (or for his clinic) and asking for a confirmation that this is the mailing
 address we are to use. -->
-		<%= simple_form_for(@request) do |f| %>
+<!-- DEBUG: Why is form NOT being laid out in 'horizontal mode? widen form or reduce default size of input fields -->
+		<%= simple_form_for @request, :html => { :class=>'form-horizontal'} do |f| %>
+			<fieldset>
 			<%= f.error_notification %>
 			<%= f.input :first_name %>
 			<%= f.input :last_name %>
-			<%= f.input :email %>
-			<%= f.input :phone, :required => false %>
+			<%= f.input :email, :prompt => 'johndoe@gmail.com' %>
+			<%= f.input :phone, :required => false, :prompt => '(999) 999-9999' %>
 			<%= f.input :address  %>
 			<%= f.input :city  %>
-			<%= f.input :state  %>
-			<%= f.input :zip  %>
+			<%= f.input :state, :prompt => 'CA'  %>
+			<%= f.input :zip :prompt => '99999'  %>
 			<%= f.input :number_of_catelogs_requested %>
 			<%= f.button :submit %>
+			</fieldset>
 		<% end %>
 		<!--
 			<%# f.label :wants_n_catelogs, "How many would you like?" %>

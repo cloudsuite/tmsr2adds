@@ -12,6 +12,11 @@
 		(choice of <size> and <color> the base product is offered in. 
 		TruMedical did not use Netsuite's 'matrix products' to model this, instead
 		modeling each specific product as a Netsuite item.  
+		
+		Bugs:  since moved to 3.1 asset pipeline the line of dots in 
+		table between name and price is not showing up.  See line 87. 
+		Same thing will have to be fixed in product_sets, product_types, and 
+		products views for show action. 
 ————————————————————————————————————————————————————————————————————— -->
 
 <%= content_for(:header) do %>
@@ -79,8 +84,10 @@
 		div#products { margin-top:10px; padding-left:40px;}
 		div#title { color:orange; font-size:14px; font-weight:bold;}
 		#products table { margin-bottom:30px; }
+		
 		#products table td.description { 
-			background-image: url("../images/utility/dot.gif");
+			background-image: url("#{<%= image_tag('utility/dot.gif') %>}" );
+			/* background-image: url("/images/utility/dot.gif"); */
 			background-repeat: repeat-x;
 			background-position:0% 70%; 
 			}	
@@ -105,12 +112,15 @@
 	
 	<div id="left_column" >
 
-		<!-- menu —————————————————————————————————————————— -->
-		<%= render(:partial => 'shared/menu') %>
+		<!-- menu —————————————————————————————————————————— -->			
+		<%= render(:partial => "/shared/menu") %> 
+	
 
-		<!-- featured products  —————————————————————— -->
-		<%= render(:partial => 'shared/featuredProducts') %>
-
+		<!-- featured products  —————————————————————— -->		
+			<!-- not implemented yet
+			<#= render(:partial => 'shared/featuredProducts') %>
+			-->
+		
 	</div><!-- end of div 'left_column' -->
 
 	<div id="center_column">
@@ -130,7 +140,9 @@
 				</div>
 				
 				<!-- menu popups: top level categories ——————————————————————————————————— -->
-				<%= render(:partial => "/shared/menu_popups") %>
+				<% cache(:fragment => 'base_product_shared_menu_popups') do %> 
+				  <%= render(:partial => "/shared/menu_popups") %>
+				<% end %>
 
 				<div id="product_goodies">
 	      <!-- base product ———————————————————————————————————————————————————————— -->

@@ -1,11 +1,18 @@
 <div id="metasearch">	
-	<!-- the following two lines prevent the metasearch code from getting an undefined model_name error.  Note that since the instance variable @product is not saved, it does not create an entry in the database; it only chews memory -->
+	<!-- the following two lines prevent the metasearch code from getting an undefined model_name error.  Note that since the instance variable @product is not saved, it does not create an entry in the database; it only chews memory; is that memory being reclaimed at the end of this users session? 
+	DEBUG: :html options on f.text_field and f.submit are not having any effect. (at least on Safari)
+	field and Go are the same height on Firefox, but not on either Safari or Chrome
+	-->
+	<style>
+		.competitor { line-height:12px; }
+		.go {color:red!important; text-align:left; padding-right:3px; }
+	</style>
 	<% @product = Product.find_by_id(params[:id]) %>
-  <% @search = Product.search(params[:search]) %>
+  	<% @search = Product.search(params[:search]) %>
 	<%= form_for @search, :url => {:controller => "products", :action => "search"}, :html => {:method => :get} do |f| %>
 		<%= f.label :sammons_part_no_contains,"Competitor Cross Reference" %>
-		<%= f.text_field :sammons_part_no_contains %>
-		<%= f.submit("Go") %> 
+		<%= f.text_field :sammons_part_no_contains, :html => {:class => 'competitor'} %>
+		<%= f.submit "Go", :html => {:class => 'go' } %> 
 	<% end %>
 
 </div>

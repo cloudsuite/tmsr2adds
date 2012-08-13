@@ -1,4 +1,4 @@
-Tm3ror::Application.routes.draw do
+Tmsr2::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
