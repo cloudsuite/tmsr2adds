@@ -1,5 +1,7 @@
 <div id="metasearch">	
-	<!-- the following two lines prevent the metasearch code from getting an undefined model_name error.  Note that since the instance variable @product is not saved, it does not create an entry in the database; it only chews memory -->
+	<!-- the following two lines prevent the metasearch code from getting an undefined model_name error.  Note that since the instance variable @product is not saved, it does not create an entry in the database; it only chews memory 
+		I've put this is a cache fragment, so it should only allocate one object. 
+	-->
   <% @product = Product.find_by_id(params[:id]) %>
   <% @search = Product.search(params[:search]) %>
 	<%= form_for @search, :url => {:controller => "products", :action => "search"}, :html => {:method => :get} do |f| %>
