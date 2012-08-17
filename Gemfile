@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-ruby '1.9.2' # was 1.9.3; dropped back to see if could avoid taps date conversion problem
+ruby '1.9.2-p290' 
 gem 'rails', '3.1.5'
 
 
