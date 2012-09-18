@@ -427,6 +427,6 @@
 	
 /* ———— Product[_type/_set/baseProduct/] view pages —————————————— */
 
-div#clinician_only_warning  p { color:red; font-style:italic; padding-right:40px
-.clinician_only_paragraph { color:black; font-style:italic; }
+div#clinician_only_warning  p { color:red!important; font-style:italic; padding-right:40px; }
+.clinician_only_paragraph { color:red; font-style:italic; }
 

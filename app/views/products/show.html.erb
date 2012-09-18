@@ -135,7 +135,7 @@
 
 						<div class="picture">
 							<!-- change to large picture --> 
-							<%= image_tag("products/all_large/" + @product.image_filename + ".jpg") %>
+							<%= image_tag("http://s3.amazonaws.com/trumedical/images/products/all_large/" + @product.image_filename + ".jpg") %>
 							<!-- 
 							<%# image_tag("/images/products/modalities_large/" + @product.image_filename[0,6] + "-000" + ".jpg", :size => "169x179") %>
 						-->
@@ -161,15 +161,14 @@
 								<td>Part No.:</td>			
 								<td><%= @product.tms_part_no %></td>
 							</tr>
+							<!-- removed per Bill Sept 2012: duplicates info in the breadcrumb higher on the page 
 							<tr>
 								<td>Category:</td>
-								<!-- products returned by sammons search might not have category_id if they are part of a base-product. No longer true; call parts now have a lowest category  -->
 								<td>
-									<!-- <%# @product.category.name unless @product.base_product_id %> -->
-									<!-- <%#  @product.category.parent.name + " / " + @product.category.name %> -->
-									<%= @product.category_l1 + " / " + @product.category_l2 + " / " + @product.category_l3 %> 
+									<#= @product.category_l1 + " / " + @product.category_l2 + " / " + @product.category_l3 %> 
 								</td>
 							</tr>
+							-->
 							<tr>
 								<td valign="top">Description:</td>
 								<td><%= sanitize(@product.long_description) %></td>

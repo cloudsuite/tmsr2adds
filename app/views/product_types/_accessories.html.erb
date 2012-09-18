@@ -31,7 +31,7 @@
 			product-sets
 		--> 
 			
-		<% @product_type.accessories.each do |p| %>
+		<% @product_type.accessories.order("tms_part_no").each do |p| %>
 			<tr>
 				<td><%= p.tms_part_no %></td>
 				<td class="description">

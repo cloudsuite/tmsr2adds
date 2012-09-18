@@ -149,7 +149,7 @@
 
 				<div id="product_image_description">
 					<!-- change to large picture --> 
-					<%= image_tag("products/all_large/" + @base_product.image_filename[0,6] +"-000" + ".jpg") %>
+					<%= image_tag("http://s3.amazonaws.com/trumedical/images/products/all_large/" + @base_product.image_filename[0,6] +"-000" + ".jpg") %>
 					<!--
 					<%# image_tag("/images/products/all_medium/" + @base_product.image_filename[0,6] + "-000" + ".jpg") %>
 					-->
@@ -185,7 +185,7 @@
 						<th align="right">Price</th>
 						<th align="left">Qty</th>
 						
-					<% @base_product.simple_products.each do |p| %>
+					<% @base_product.simple_products.order("tms_part_no").each do |p| %>
 						<tr>
 							<td><%= p.tms_part_no %></td>
 							<td class="description">

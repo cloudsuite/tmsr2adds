@@ -111,9 +111,9 @@
 			div#metasearch form input[type="submit"] {
 					display:inline;
 					font-size:10px!important;
-					background-color: white!important;
+					background-color: #0094DE!important;
 					font-family: inherit;
-					color: black;
+					color: white;
 					text-shadow: none!important; /* legal value? or just ignored? */
 					border:none!important;
 					border-radius: 2px;
@@ -385,7 +385,7 @@
 				
 				<!-- place on individual page templates instead ( don't want it on home page ) 
 				<div id="logo">
-					<#= image_tag("logos/logo_on_white_315.png") %>
+					<#= image_tag("http://s3.amazonaws.com/trumedical/images/logos/logo_on_white_315.jpg") %>
 				</div>
 				--> 
 					
@@ -422,8 +422,8 @@
 					<!-- <a href="#">FAQs</a> -->
 				
 					<span style="color:white;">Find us on:&nbsp;&nbsp;</span> 
-					<%= link_to(image_tag('footer/facebook.png', :size => '16x16', :alt => 'Facebook link'),"http://www.facebook.com/trumedical", :target => "_blank") %>
-					<%= link_to(image_tag('footer/twitter.png', :size => '16x16', :alt => 'Twitter link'),"http://www.twitter.com/trumedical", :target => "_blank") %>
+					<%= link_to(image_tag('http://s3.amazonaws.com/trumedical/images/footer/facebook.png', :size => '16x16', :alt => 'Facebook link'),"http://www.facebook.com/trumedical", :target => "_blank") %>
+					<%= link_to(image_tag('http://s3.amazonaws.com/trumedical/images/footer/twitter.png', :size => '16x16', :alt => 'Twitter link'),"http://www.twitter.com/trumedical", :target => "_blank") %>
 					<!-- attempt to get the word 'Twitter' into the link; failing
 					<#= link_to "#{image_tag('footer/twitter.png', :size => '16x16', :alt => 'Twitter link')} Twitter","http://www.twitter.com/trumedical", :target => "_blank" %>
 					-->
